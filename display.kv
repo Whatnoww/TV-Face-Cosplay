@@ -1,0 +1,43 @@
+<Canvas>:
+    layer1source: "./Resources/eyes/1.png"
+    layer2source: "./Resources/mouth/1.png"
+    angle: 45
+    debug: ""
+
+    canvas.before:
+        PushMatrix
+        Rotate:
+            origin: self.center
+            angle: root.angle
+
+    canvas.after:
+        PopMatrix
+
+    FloatLayout:
+        size: root.width, root.height
+        mipmap:True
+        mag_filter: "nearest"
+
+
+
+        CustomImage:
+            id: l1
+            size_hint: 1, 1
+            source: root.layer1source
+            fit_mode: "contain"
+            mipmap: True
+            min_filter: "nearest"
+            mag_filter: "nearest"
+
+
+        CustomImage:
+            id: l2
+            size_hint: 1, 1
+            source: root.layer2source
+            fit_mode: "contain"
+            mipmap: True
+            min_filter: "nearest"
+            mag_filter: "nearest"
+
+        Label:
+            text: root.debug
